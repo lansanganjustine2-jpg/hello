@@ -136,6 +136,15 @@ body::before {
     color: #666;
     letter-spacing: 1px;
 }
+    
+.letter-img {
+    width: 80%;          /* makes it smaller than the letter width */
+    max-width: 200px;    /* optional max size */
+    display: block;
+    margin: 0 auto 15px; /* centers image and adds space below */
+    border-radius: 10px; /* optional rounded corners */
+}
+
 </style>
 </head>
 
@@ -146,6 +155,7 @@ body::before {
     <div class="flap"></div>
 
     <div class="letter">
+        <img src="larit.jpg" alt="Valentine Image" class="letter-img">
         <h2>For My Fav mga MALARIT's</h2>
             <p>
                 Hi mga Malarit, with Valentine’s Day coming tomorrow, I just want to say that it’s not only for couples, it’s about appreciating the people we love. <br><br>
@@ -163,12 +173,10 @@ body::before {
                 Having you both as my friends is something I truly treasure.
                 <br><br>
         
-                — Justine
+                — No.1 Malarit, Justine Lansangan
             </p>
     </div>
 </div>
-
-<div class="instruction">Justine Lansangan</div>
 
 <script>
 function openLetter(element) {
@@ -178,4 +186,5 @@ function openLetter(element) {
 
 </body>
 </html>
+
 
