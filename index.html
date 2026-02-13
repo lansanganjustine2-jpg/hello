@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Special</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh; /* changed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f9e3e6, #f3e5f5);
+    font-family: 'Georgia', serif;
+    overflow-y: auto; /* changed so letter won’t be cut */
+}
+
+/* Envelope Wrapper */
+.envelope-wrapper {
+    position: relative;
+    width: 340px;
+    height: 300px; /* increased height */
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+/* Envelope Body */
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #b76e79, #a26769);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Envelope Flap */
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #d8a7b1, #c38eb4);
+    clip-path: polygon(0 0, 50% 65%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s ease;
+    border-radius: 12px;
+}
+
+/* Letter Paper */
+.letter {
+    position: absolute;
+    width: 90%;
+    min-height: 260px;
+    background: #fffdf8;
+    top: 10px;
+    left: 5%;
+    padding: 30px 25px;
+    box-sizing: border-box;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 1.3s ease, opacity 1s ease;
+    opacity: 0;
+
+    clip-path: polygon(
+        0% 5%, 
+        5% 0%, 
+        95% 0%, 
+        100% 5%, 
+        100% 95%, 
+        95% 100%, 
+        5% 100%, 
+        0% 95%
+    );
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 1px solid #f1dcdc;
+}
+
+/* Decorative Borders */
+.letter::before,
+.letter::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #b76e79, transparent);
+}
+
+.letter::before { top: 0; }
+.letter::after { bottom: 0; }
+
+.letter h2 {
+    margin-top: 0;
+    color: #b76e79;
+    letter-spacing: 1px;
+}
+
+.letter p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Open Animation */
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .letter {
+    transform: translateY(-200px);
+    opacity: 1;
+}
+
+/* Soft Moving Light Background */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 40%);
+    animation: glow 14s linear infinite;
+}
+
+@keyframes glow {
+    from { transform: translate(-25%, -25%); }
+    to { transform: translate(25%, 25%); }
+}
+
+.instruction {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 1px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope-wrapper" onclick="openLetter(this)">
+    <div class="envelope"></div>
+    <div class="flap"></div>
+
+    <div class="letter">
+        <h2>For My Two Friends</h2>
+        <p>
+            I’m so thankful to Ariane Dalisay. Without her, I would never have known you.
+            When you both came into my life, everything became easier and brighter.
+            <br><br>
+
+            Thank you to both of you for always being there for me — for listening to my stories,
+            my rants, and my random thoughts. Your friendship means so much to me,
+            and I’m really grateful to have you in my life.
+            <br><br>
+
+            I hope we continue to support each other and create many happy memories together.
+            Having you as my friends is something I truly treasure.
+            <br><br>
+
+            — Justine
+        </p>
+    </div>
+</div>
+
+<div class="instruction">Justine Lansangan</div>
+
+<script>
+function openLetter(element) {
+    element.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
